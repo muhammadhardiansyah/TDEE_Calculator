@@ -41,7 +41,7 @@ class _InputPageState extends State<InputPage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(2.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -92,22 +92,24 @@ class _InputPageState extends State<InputPage> {
                   const Text(
                     'HEIGHT',
                     style: labelTextStyle,
-
+              
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline.alphabetic,
-                    children: [
-                      Text(
-                        height.toString(),
-                        style: numberTextStyle,
-                      ),
-                      const Text(
-                        ' cm',
-                        style: labelTextStyle,
-                      ),
-                    ],
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(
+                          height.toString(),
+                          style: numberTextStyle,
+                        ),
+                        const Text(
+                          ' cm',
+                          style: labelTextStyle,
+                        ),
+                      ],
+                    ),
                   ),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
@@ -242,46 +244,46 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: CustomCard(
-                    color: activeCardColor,
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'Activity',
-                          style: labelTextStyle,
-                        ),
-                      DropdownButton(
-                      // Initial Value
-                        menuMaxHeight: 145.0,
-                        borderRadius: BorderRadius.circular(10.0),
-                        dropdownColor: Color(0xFF14202E),
-                        value: selectedActivities,
-                        // Down Arrow Icon
-                        icon: const Icon(Icons.keyboard_arrow_down),   
-                        // Array list of items
-                        items: activities.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(items),
-                          );
-                        }).toList(),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedActivities = newValue!;
-                          });
-                        },
-                        ),
-                            ],
-                          ),
-                        ),
+            child: CustomCard(
+              color: activeCardColor,
+              cardChild: Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Activity',
+                      style: labelTextStyle,
+                    ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: DropdownButton(
+                    // Initial Value
+                      isExpanded: true,
+                      menuMaxHeight: 145.0,
+                      borderRadius: BorderRadius.circular(10.0),
+                      dropdownColor: Color(0xFF14202E),
+                      value: selectedActivities,
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),   
+                      // Array list of items
+                      items: activities.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedActivities = newValue!;
+                        });
+                      },
                       ),
-                    ],
                   ),
-                ),
+                        ],
+                      ),
+              ),
+                  ),
+          ),
             BottomButton(
             buttonTitle: 'CALCULATE',
             onTap: () {
