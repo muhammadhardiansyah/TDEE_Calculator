@@ -5,7 +5,13 @@ import 'package:tdee_calculator/components/bottom_button.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage(
-      {required this.tdee, required this.mildLoss, required this.extremeLoss, required this.weightLoss, required this.mildGain, required this.weightGain, required this.fastGain});
+      {required this.tdee,
+      required this.mildLoss,
+      required this.extremeLoss,
+      required this.weightLoss,
+      required this.mildGain,
+      required this.weightGain,
+      required this.fastGain});
 
   final String tdee;
   final String mildLoss;
@@ -30,16 +36,16 @@ class ResultPage extends StatelessWidget {
               padding: const EdgeInsets.all(15.0),
               alignment: Alignment.bottomLeft,
               child: const Text(
-                'Your Result',
+                'Your Maintenance Calories',
                 style: TextStyle(
-                  fontSize: 50.0,
+                  fontSize: 24.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
           ),
           Expanded(
-            flex: 5,
+            flex: 4,
             child: CustomCard(
               color: activeCardColor,
               cardChild: Column(
@@ -50,29 +56,35 @@ class ResultPage extends StatelessWidget {
                     tdee,
                     style: bmiTextStyle,
                   ),
-                  Text(
-                    mildLoss,
-                    style: resultTextStyle,
+                  const Text(
+                    "calories per day",
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 4,
+            child: CustomCard(
+              color: activeCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
                   Text(
-                    weightLoss,
-                    style: resultTextStyle,
+                    (int.parse(tdee) * 7).toString(),
+                    style: bmiTextStyle,
                   ),
-                  Text(
-                    extremeLoss,
-                    style: resultTextStyle,
-                  ),
-                  Text(
-                    mildGain,
-                    style: resultTextStyle,
-                  ),
-                  Text(
-                    weightGain,
-                    style: resultTextStyle,
-                  ),
-                  Text(
-                    fastGain,
-                    style: resultTextStyle,
+                  const Text(
+                    "calories per week",
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
                 ],
               ),

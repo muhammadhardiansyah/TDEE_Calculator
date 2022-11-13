@@ -32,7 +32,7 @@ const resultTextStyle = TextStyle(
 );
 
 const bmiTextStyle = TextStyle(
-  fontSize: 100,
+  fontSize: 80,
   fontWeight: FontWeight.bold,
 );
 
