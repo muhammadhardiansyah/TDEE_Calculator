@@ -1,5 +1,5 @@
-import 'dart:math';
 import 'constants.dart';
+import 'package:intl/intl.dart';
 
 class Calculator {
   Calculator(
@@ -14,6 +14,7 @@ class Calculator {
   final Gender gender;
   final int age;
   final String strActivities;
+  var formatter = NumberFormat.decimalPattern('id');
 
   double getActivityLevel() {
     var lvl = 0.0;
@@ -54,30 +55,10 @@ class Calculator {
   }
 
   String getCalculate() {
-    return (calculate()).toStringAsFixed(0);
+    return formatter.format(calculate());
   }
 
-  String getMildWeightLoss() {
-    return (calculate() * 0.91).toStringAsFixed(0);
-  }
-
-  String getWeightLoss() {
-    return (calculate() * 0.81).toStringAsFixed(0);
-  }
-
-  String getExtremeWeightLoss() {
-    return (calculate() * 0.63).toStringAsFixed(0);
-  }
-
-  String getMildWeightGain() {
-    return (calculate() * 1.09).toStringAsFixed(0);
-  }
-
-  String getWeightGain() {
-    return (calculate() * 1.19).toStringAsFixed(0);
-  }
-
-  String getFastWeightGain() {
-    return (calculate() * 1.37).toStringAsFixed(0);
+  String getCalculateWeek() {
+    return formatter.format(calculate() * 7);
   }
 }

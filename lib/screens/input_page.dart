@@ -291,23 +291,13 @@ class _InputPageState extends State<InputPage> {
                     age: age,
                     strActivities: selectedActivities);
                 String tdee = cal.getCalculate();
-                String mildLoss = cal.getMildWeightLoss();
-                String weightLoss = cal.getWeightLoss();
-                String extremeLoss = cal.getExtremeWeightLoss();
-                String mildGain = cal.getMildWeightGain();
-                String weightGain = cal.getWeightGain();
-                String fastGain = cal.getFastWeightGain();
+                String tdeeWeek = cal.getCalculateWeek();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => ResultPage(
                       tdee: tdee,
-                      mildLoss: mildLoss,
-                      weightLoss: weightLoss,
-                      extremeLoss: extremeLoss,
-                      mildGain: mildGain,
-                      weightGain: weightGain,
-                      fastGain: fastGain,
+                      tdeeWeek: tdeeWeek,
                     ),
                   ),
                 );
